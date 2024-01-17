@@ -1,0 +1,194 @@
+input_boolean:
+  keypad_enable_user_slot_1:
+    name: Keypad Enable User Slot 1
+  keypad_enable_user_slot_2:
+    name: Keypad Enable User Slot 2
+  keypad_enable_user_slot_3:
+    name: Keypad Enable User Slot 3
+  keypad_enable_user_slot_4:
+    name: Keypad Enable User Slot 4
+
+input_button:
+  keypad_scheduler_action_button_user_slot_1:
+    name: Keypad Button User Slot 1
+  keypad_scheduler_action_button_user_slot_2:
+    name: Keypad Button User Slot 2
+  keypad_scheduler_action_button_user_slot_3:
+    name: Keypad Button User Slot 3
+  keypad_scheduler_action_button_user_slot_4:
+    name: Keypad Button User Slot 4
+  keypad_scheduler_action_button_onetime_slot_1:
+    name: Keypad Button One-time Slot 1
+  keypad_scheduler_action_button_onetime_slot_2:
+    name: Keypad Button One-time Slot 2
+
+input_text:
+  ## User Codes
+  keypad_code_user_slot_1:
+    name: Code
+    icon: mdi:none
+    min: 4
+    max: 4
+    pattern: "[0-9]*"
+    mode: password
+  keypad_code_user_slot_2:
+    name: Code
+    icon: mdi:none
+    min: 4
+    max: 4
+    pattern: "[0-9]*"
+    mode: password
+  keypad_code_user_slot_3:
+    name: Code
+    icon: mdi:none
+    min: 4
+    max: 4
+    pattern: "[0-9]*"
+    mode: password
+  keypad_code_user_slot_4:
+    name: Code
+    icon: mdi:none
+    min: 4
+    max: 4
+    pattern: "[0-9]*"
+    mode: password
+
+  ## User Names
+  keypad_name_user_slot_1:
+    name: Name
+    icon: "mdi:alarm-panel-outline"
+    min: 1
+    max: 10
+    pattern: "[A-Za-z0-9]*"
+
+  keypad_name_user_slot_2:
+    name: Name
+    icon: "mdi:alarm-panel-outline"
+    min: 1
+    max: 10
+    pattern: "[A-Za-z0-9]*"
+
+  keypad_name_user_slot_3:
+    name: Name
+    icon: "mdi:alarm-panel-outline"
+    min: 1
+    max: 10
+    pattern: "[A-Za-z0-9]*"
+
+  keypad_name_user_slot_4:
+    name: Name
+    icon: "mdi:alarm-panel-outline"
+    min: 1
+    max: 10
+    pattern: "[A-Za-z0-9]*"
+
+  ## One-Time Codes
+  keypad_code_onetime_slot_1:
+    name: One-Time Code
+    icon: "mdi:alarm-panel"
+    min: 4
+    max: 4
+    pattern: "[0-9]*"
+  keypad_code_onetime_slot_2:
+    name: One-Time Code
+    icon: "mdi:alarm-panel"
+    min: 4
+    max: 4
+    pattern: "[0-9]*"
+
+group:
+  keypad_user_names:
+    name: "Keypad User Codes"
+    entities:
+      - input_text.keypad_name_user_slot_1
+      - input_text.keypad_name_user_slot_2
+      - input_text.keypad_name_user_slot_3
+      - input_text.keypad_name_user_slot_4
+  keypad_user_codes:
+    name: "Keypad User Codes"
+    entities:
+      - input_text.keypad_code_user_slot_1
+      - input_text.keypad_code_user_slot_2
+      - input_text.keypad_code_user_slot_3
+      - input_text.keypad_code_user_slot_4
+  keypad_onetime_codes:
+    name: "Keypad One-Time Codes"
+    entities:
+      - input_text.keypad_code_onetime_slot_1
+      - input_text.keypad_code_onetime_slot_2
+  keypad_codes:
+    name: "Keypad Slots/Codes"
+    entities:
+      - group.keypad_user_names
+      - group.keypad_user_codes
+      - group.keypad_onetime_codes
+
+template:
+  - sensor:
+      - name: "Keypad Enabled User Slot 1"
+        state: >-
+          {% if is_state('input_boolean.keypad_enable_user_slot_1','on') %}
+            {% if is_state('switch.schedule_keypad_user_slot_1','on') %}
+              {{ is_number(state_attr('switch.schedule_keypad_user_slot_1','current_slot')) }}
+            {% else %}
+              {{True}}
+            {% endif %}
+          {% else %}
+            {{False}}
+          {% endif %}
+      - name: "Keypad Enabled User Slot 2"
+        state: >-
+          {% if is_state('input_boolean.keypad_enable_user_slot_2','on') %}
+            {% if is_state('switch.schedule_keypad_user_slot_2','on') %}
+              {{ is_number(state_attr('switch.schedule_keypad_user_slot_2','current_slot')) }}
+            {% else %}
+              {{True}}
+            {% endif %}
+          {% else %}
+            {{False}}
+          {% endif %}
+      - name: "Keypad Enabled User Slot 3"
+        state: >-
+          {% if is_state('input_boolean.keypad_enable_user_slot_3','on') %}
+            {% if is_state('switch.schedule_keypad_user_slot_3','on') %}
+              {{ is_number(state_attr('switch.schedule_keypad_user_slot_3','current_slot')) }}
+            {% else %}
+              {{True}}
+            {% endif %}
+          {% else %}
+            {{False}}
+          {% endif %}
+      - name: "Keypad Enabled User Slot 4"
+        state: >-
+          {% if is_state('input_boolean.keypad_enable_user_slot_4','on') %}
+            {% if is_state('switch.schedule_keypad_user_slot_4','on') %}
+              {{ is_number(state_attr('switch.schedule_keypad_user_slot_4','current_slot')) }}
+            {% else %}
+              {{True}}
+            {% endif %}
+          {% else %}
+            {{False}}
+          {% endif %}
+      - name: "Keypad Enabled OneTime Slot 1"
+        state: >-
+          {% if states('input_text.keypad_code_onetime_slot_1')|int(0) > 0 %}
+            {% if is_state('switch.schedule_keypad_one_time_slot_1','on') %}
+              {{ is_number(state_attr('switch.schedule_keypad_one_time_slot_1','current_slot')) }}
+            {% else %}
+              {{True}}
+            {% endif %}
+          {% else %}
+            {{False}}
+          {% endif %}
+      - name: "Keypad Enabled OneTime Slot 2"
+        state: >-
+          {% if states('input_text.keypad_code_onetime_slot_2')|int(0) > 0 %}
+            {% if is_state('switch.schedule_keypad_one_time_slot_2','on') %}
+              {{ is_number(state_attr('switch.schedule_keypad_one_time_slot_2','current_slot')) }}
+            {% else %}
+              {{True}}
+            {% endif %}
+          {% else %}
+            {{False}}
+          {% endif %}
+
