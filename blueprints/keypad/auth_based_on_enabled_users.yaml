@@ -2,7 +2,7 @@ blueprint:
   name: Keypad - Auth Based On Enabled Users
   description: Authenticate Keypad Based On Enabled Users
   domain: automation
-  #source_url: https://github.com/home-assistant/core/blob/master/homeassistant/components/script/blueprints/confirmable_notification.yaml
+  source_url: https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/blob/main/blueprints/keypad/auth_based_on_enabled_users.yaml
   author: Lenir Santiago
   input:
     action_script:
