@@ -1,0 +1,203 @@
+views:
+  - title: Keypad
+    path: keypad
+    icon: mdi:alarm-panel
+    theme: Mushroom
+    type: custom:vertical-layout
+    badges: []
+    cards:
+      - states:
+          - arm_home
+          - arm_away
+        type: alarm-panel
+        entity: alarm_control_panel.zigbee_keypad_alarm_control_panel
+        name: Zigbee Keypad
+        view_layout:
+          column: 2
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-title-card
+            title: Enable User Codes
+            title_tap_action:
+              action: none
+            subtitle_tap_action:
+              action: none
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: input_boolean.keypad_enable_user_slot_1
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                layout: vertical
+                name: User1
+                secondary_info: none
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: input_boolean.keypad_enable_user_slot_2
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                layout: vertical
+                name: User2
+                secondary_info: none
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: input_boolean.keypad_enable_user_slot_3
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                layout: vertical
+                name: User3
+                secondary_info: none
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: input_boolean.keypad_enable_user_slot_4
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                layout: vertical
+                name: User4
+                secondary_info: none
+                tap_action:
+                  action: toggle
+          - type: custom:mushroom-title-card
+            title: Keypad User Codes
+            title_tap_action:
+              action: none
+            subtitle_tap_action:
+              action: none
+          - type: horizontal-stack
+            cards:
+              - type: entities
+                entities:
+                  - entity: input_text.keypad_name_user_slot_1
+                    card_mod:
+                      style:
+                        hui-generic-entity-row:
+                          $: |
+                            state-badge {
+                              display: none;
+                            }
+                            .info {
+                              margin-left:0 !important;
+                            }
+                  - entity: input_text.keypad_name_user_slot_2
+                    card_mod:
+                      style:
+                        hui-generic-entity-row:
+                          $: |
+                            state-badge {
+                              display: none;
+                            }
+                            .info {
+                              margin-left:0 !important;
+                            }  
+                  - entity: input_text.keypad_name_user_slot_3
+                    card_mod:
+                      style:
+                        hui-generic-entity-row:
+                          $: |
+                            state-badge {
+                              display: none;
+                            }
+                            .info {
+                              margin-left:0 !important;
+                            }  
+                  - entity: input_text.keypad_name_user_slot_4
+                    card_mod:
+                      style:
+                        hui-generic-entity-row:
+                          $: |
+                            state-badge {
+                              display: none;
+                            }
+                            .info {
+                              margin-left:0 !important;
+                            }  
+                title: Users
+                show_header_toggle: false
+                state_color: false
+              - type: entities
+                entities:
+                  - entity: input_text.keypad_code_user_slot_1
+                    card_mod:
+                      style:
+                        hui-generic-entity-row:
+                          $: |
+                            state-badge {
+                              display: none;
+                            }
+                            .info {
+                              margin-left:0 !important;
+                            }
+                  - entity: input_text.keypad_code_user_slot_2
+                    card_mod:
+                      style:
+                        hui-generic-entity-row:
+                          $: |
+                            state-badge {
+                              display: none;
+                            }
+                            .info {
+                              margin-left:0 !important;
+                            }  
+                  - entity: input_text.keypad_code_user_slot_3
+                    card_mod:
+                      style:
+                        hui-generic-entity-row:
+                          $: |
+                            state-badge {
+                              display: none;
+                            }
+                            .info {
+                              margin-left:0 !important;
+                            }  
+                  - entity: input_text.keypad_code_user_slot_4
+                    card_mod:
+                      style:
+                        hui-generic-entity-row:
+                          $: |
+                            state-badge {
+                              display: none;
+                            }
+                            .info {
+                              margin-left:0 !important;
+                            }  
+                title: Codes
+                show_header_toggle: false
+                state_color: false
+          - type: entities
+            entities:
+              - entity: input_text.keypad_code_onetime_slot_1
+              - entity: input_text.keypad_code_onetime_slot_2
+            show_header_toggle: false
+            state_color: false
+      - type: custom:scheduler-card
+        include:
+          - input_button.keypad_scheduler_action_button_user_slot_1
+          - input_button.keypad_scheduler_action_button_user_slot_2
+          - input_button.keypad_scheduler_action_button_user_slot_3
+          - input_button.keypad_scheduler_action_button_user_slot_4
+          - input_button.keypad_scheduler_action_button_onetime_slot_1
+          - input_button.keypad_scheduler_action_button_onetime_slot_2
+        exclude: []
+        sort_by:
+          - title
+        display_options:
+          primary_info: default
+          secondary_info: []
+          icon: action
+        show_header_toggle: true
+        title: Enable User Schedule
+        discover_existing: false
+        tags:
+          - Onetime
+          - User
