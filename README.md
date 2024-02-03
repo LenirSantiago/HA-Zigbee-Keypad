@@ -44,10 +44,12 @@
 Configuration, Automation and Dashboard YAML files to use a Zigbee Keypad. The Xfinity xhk1-ue was used for testing, but there shouldn't be a reason why this wouldn't work with other Zigbee (or zwave) keypads.
 
 ## Installation
-<details>
 <summary>click to show installation instructions </summary>
+
 1. Download the latest release of `HA-Zigbee-Keypad-Xfinity-xhk1-ue` [here](https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/tree/main) and place it into `./config`.
 2. (optional) To enable users based on a schedule:
-  2.1 make sure to install [here](https://github.com/nielsfaber/scheduler-component) 
-  2.2 make sure to install [here](https://github.com/nielsfaber/scheduler-card) 
-</details>
+   
+  2.1 make sure to install [`https://github.com/nielsfaber/scheduler-component`](https://github.com/nielsfaber/scheduler-component)
+  2.2 make sure to install [`https://github.com/nielsfaber/scheduler-card`](https://github.com/nielsfaber/scheduler-card) 
+
+
