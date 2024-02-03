@@ -2,7 +2,7 @@ blueprint:
   name: Keypad - Auth Based On Matched Codes
   description: Authenticate Keypad Based On Matched Codes
   domain: automation
-  #source_url: https://github.com/home-assistant/core/blob/master/homeassistant/components/script/blueprints/confirmable_notification.yaml
+  source_url: https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/edit/main/blueprints/keypad/auth_based_on_matched_codes.yaml
   author: Lenir Santiago
   input:
     action_script:
