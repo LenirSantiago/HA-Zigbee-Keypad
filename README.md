@@ -42,13 +42,6 @@ The project uses HA [`events`](https://www.home-assistant.io/docs/configuration/
 8. (optional) To enable users based on a schedule:  
     1. Install HACS Integration [`scheduler-component`](https://github.com/nielsfaber/scheduler-component)  
     2. Install HACS Frontend [`scheduler-card`](https://github.com/nielsfaber/scheduler-card)
-    3. Create (6) schedules:
-        1. switch.schedule_keypad_user_slot_1
-        2. switch.schedule_keypad_user_slot_2
-        3. switch.schedule_keypad_user_slot_3
-        4. switch.schedule_keypad_user_slot_4
-        5. switch.schedule_keypad_one_time_slot_1
-        7. switch.schedule_keypad_one_time_slot_2
 9. Create a dashboard or a view for the keypad
 10. Copy the contents of `./dashboard.yaml` into your dashboard/view.
 10. Reload Home Assistant
@@ -61,9 +54,18 @@ The project uses HA [`events`](https://www.home-assistant.io/docs/configuration/
         - One-Time codes are considered disabled when set to `0000`
     - Set user names and codes
     - If using a schedule:
-        - you can enable/disable the users' schedules.
-        - Edit the users' schedules.
-
+      - Add (6) schedules:
+          - <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" width="150" />
+          - <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" width="150" />
+          - <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" width="150" />          
+          1. Name: Keypad User Slot 1
+          2. Name: Keypad User Slot 2
+          3. Name: Keypad User Slot 3
+          4. Name: Keypad User Slot 4
+          5. Name: Keypad One-Time Slot 1
+          6. Name: Keypad One-Time Slot 2
+      - you can enable/disable the users' schedules.
+      - Edit the users' schedules.
 
 ## Usage
 
