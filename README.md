@@ -55,7 +55,7 @@ The project uses HA [`events`](https://www.home-assistant.io/docs/configuration/
     - Set user names and codes
     - If using a schedule:
       - Add (6) schedules:
-          - <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/blob/main/images/configure_entity.png" width="150" />
+          - <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/blob/main/images/configure_entity.png"/>
           - <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/blob/main/images/configure_time.png" width="150" />
           - <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/blob/main/images/configure_options.png" width="150" />          
           1. Name: Keypad User Slot 1
