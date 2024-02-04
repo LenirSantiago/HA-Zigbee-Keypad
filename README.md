@@ -41,7 +41,14 @@ The project uses HA [`events`](https://www.home-assistant.io/docs/configuration/
 7. Install HACS Frontend [`lovelave-card-mod`](https://github.com/thomasloven/lovelace-card-mod)
 8. (optional) To enable users based on a schedule:  
     1. Install HACS Integration [`scheduler-component`](https://github.com/nielsfaber/scheduler-component)  
-    2. Install HACS Frontend [`scheduler-card`](https://github.com/nielsfaber/scheduler-card)  
+    2. Install HACS Frontend [`scheduler-card`](https://github.com/nielsfaber/scheduler-card)
+    3. Create (6) schedules:
+        1. switch.schedule_keypad_user_slot_1
+        2. switch.schedule_keypad_user_slot_2
+        3. switch.schedule_keypad_user_slot_3
+        4. switch.schedule_keypad_user_slot_4
+        5. switch.schedule_keypad_one_time_slot_1
+        7. switch.schedule_keypad_one_time_slot_2
 9. Create a dashboard or a view for the keypad
 10. Copy the contents of `./dashboard.yaml` into your dashboard/view.
 10. Reload Home Assistant
