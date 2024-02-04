@@ -95,4 +95,4 @@ Potential ways to solve this:
 If you want to make donation as appreciation of my work, you can do so via PayPal (preferred) or buy me a coffee. Thank you!
 
 <a href="https://www.paypal.com/donate/?hosted_button_id=DR8A2V27EZYVN" target="_blank"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" width="150" /></a>
-<a href="https://www.buymeacoffee.com/vrdx7mi" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png"></a>
+<a href="https://www.buymeacoffee.com/lenirsantiago" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png"></a>
