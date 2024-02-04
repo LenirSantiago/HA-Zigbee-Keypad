@@ -1,4 +1,5 @@
 input_boolean:
+  ## Enables/Disables a user
   keypad_enable_user_slot_1:
     name: Keypad Enable User Slot 1
   keypad_enable_user_slot_2:
@@ -7,8 +8,12 @@ input_boolean:
     name: Keypad Enable User Slot 3
   keypad_enable_user_slot_4:
     name: Keypad Enable User Slot 4
+  # Generic for testing purposes
+  keypad_test_switch:
+    name: Keypad Test Switch
 
 input_button:
+  ## Indicates when User is Active(Pressed) or Inactive (not Pressed) during a Schedule
   keypad_scheduler_action_button_user_slot_1:
     name: Keypad Button User Slot 1
   keypad_scheduler_action_button_user_slot_2:
@@ -124,6 +129,10 @@ group:
       - group.keypad_onetime_codes
 
 template:
+  ## Indicates when User is Enabled/Disabled based on:
+  ## - User Enable/Disabled Switch (input_boolean)
+  ## - User Schedule Enabled/Disabled Switch (switch)
+  ## - User Schedule Active/Inactive (input_button)
   - sensor:
       - name: "Keypad Enabled User Slot 1"
         state: >-
@@ -192,3 +201,182 @@ template:
             {{False}}
           {% endif %}
 
+script:
+  test_script_basic:
+    alias: Keypad Test Script (Basic)
+    sequence:
+      - service: logbook.log
+        data:
+          message: "{{variables}}"
+          name: Keypad Log
+      - service: homeassistant.toggle
+        target:
+          entity_id: input_boolean.keypad_test_switch
+        data: {}
+    mode: single
+    icon: mdi:alarm-panel
+  keypad_test_script_advanced:
+    alias: Keypad Test Script (Advanced)
+    sequence:
+      - service: logbook.log
+        data:
+          message: "{{variables}}"
+          name: Keypad Log
+      - alias: "If the user code begins with:"
+        choose:
+          - conditions:
+              - condition: template
+                value_template: "{{true if states(usercode_entity)[0] == '1' else false}}"
+                alias: " "
+            sequence:
+              - service: homeassistant.toggle
+                target:
+                  entity_id: input_boolean.keypad_test_switch
+                data: {}
+          - conditions:
+              - condition: template
+                value_template: "{{true if states(usercode_entity)[0] == '2' else false}}"
+                alias: " "
+            sequence: []
+          - conditions:
+              - condition: template
+                value_template: "{{true if states(usercode_entity)[0] == '3' else false}}"
+                alias: " "
+            sequence:
+              - service: homeassistant.toggle
+                target:
+                  entity_id: input_boolean.keypad_test_switch
+                data: {}
+          - conditions:
+              - condition: template
+                value_template: "{{true if states(usercode_entity)[0] == '4' else false}}"
+                alias: " "
+            sequence: []
+          - conditions:
+              - condition: template
+                value_template: "{{true if states(usercode_entity)[0] == '5' else false}}"
+                alias: " "
+            sequence:
+              - service: homeassistant.toggle
+                target:
+                  entity_id: input_boolean.keypad_test_switch
+                data: {}
+          - conditions:
+              - condition: template
+                value_template: "{{true if states(usercode_entity)[0] == '6' else false}}"
+                alias: " "
+            sequence: []
+          - conditions:
+              - condition: template
+                value_template: "{{true if states(usercode_entity)[0] == '7' else false}}"
+                alias: " "
+            sequence:
+              - service: homeassistant.toggle
+                target:
+                  entity_id: input_boolean.keypad_test_switch
+                data: {}
+          - conditions:
+              - condition: template
+                value_template: "{{true if states(usercode_entity)[0] == '8' else false}}"
+                alias: " "
+            sequence: []
+          - conditions:
+              - condition: template
+                value_template: "{{true if states(usercode_entity)[0] == '9' else false}}"
+                alias: " "
+            sequence:
+              - service: homeassistant.toggle
+                target:
+                  entity_id: input_boolean.keypad_test_switch
+                data: {}
+        default:
+          - stop: ""
+        enabled: true
+    mode: single
+    icon: mdi:alarm-panel
+  keypad_test_script_per_user:
+    alias: Keypad Test Script (Per User)
+    sequence:
+      - service: logbook.log
+        data:
+          message: "{{variables}}"
+          name: Keypad Log
+      - alias: "If the user code matches:"
+        choose:
+          - conditions:
+              - alias: " "
+                condition: template
+                value_template:
+                  "{{true if states(message.variables.user_code_entity) == states('input_text.keypad_code_user_slot_1')
+                  else false}}"
+            sequence:
+              - service: homeassistant.toggle
+                target:
+                  entity_id: input_boolean.keypad_test_switch
+                data: {}
+            alias: User1
+          - conditions:
+              - alias: " "
+                condition: template
+                value_template:
+                  "{{true if states(message.variables.user_code_entity) == states('input_text.keypad_code_user_slot_2')
+                  else false}}"
+            sequence:
+              - service: homeassistant.toggle
+                target:
+                  entity_id: input_boolean.keypad_test_switch
+                data: {}
+            alias: User2
+          - conditions:
+              - alias: " "
+                condition: template
+                value_template:
+                  "{{true if states(message.variables.user_code_entity) == states('input_text.keypad_code_user_slot_3')
+                  else false}}"
+            sequence:
+              - service: homeassistant.toggle
+                target:
+                  entity_id: input_boolean.keypad_test_switch
+                data: {}
+            alias: User3
+          - conditions:
+              - alias: " "
+                condition: template
+                value_template:
+                  "{{true if states(message.variables.user_code_entity) == states('input_text.keypad_code_user_slot_4')
+                  else false}}"
+            sequence:
+              - service: homeassistant.toggle
+                target:
+                  entity_id: input_boolean.keypad_test_switch
+                data: {}
+            alias: User4
+          - conditions:
+              - alias: " "
+                condition: template
+                value_template:
+                  "{{true if message.variables.onetime_code_entity == 'input_text.keypad_code_onetime_slot_1'
+                  else false}}"
+            sequence:
+              - service: homeassistant.toggle
+                target:
+                  entity_id: input_boolean.keypad_test_switch
+                data: {}
+            alias: "One-Time #1"
+          - conditions:
+              - alias: " "
+                condition: template
+                value_template:
+                  "{{true if message.variables.onetime_code_entity == 'input_text.keypad_code_onetime_slot_2'
+                  else false}}"
+            sequence:
+              - service: homeassistant.toggle
+                target:
+                  entity_id: input_boolean.keypad_test_switch
+                data: {}
+            alias: "One-Time #2"
+        default:
+          - stop: ""
+        enabled: true
+    mode: single
+    icon: mdi:alarm-panel
