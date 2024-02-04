@@ -64,7 +64,35 @@ If everything is configured properly, simply press a 4-digit code on the keypad.
 
 ## Troubleshooting
 
-### Checking card version
+If you have an issue with this scheduler card, please report it [here](https://github.com/nielsfaber/scheduler-card/issues).
+
+### Checking scheduler card version
+
+To check which version of the scheduler card is currently active, consult the browser console logs.
+The browser console logs can only be accessed via a PC (so not via phone or tablet).
+
+[Here's](https://balsamiq.com/support/faqs/browserconsole/#:~:text=To%20open%20the%20developer%20console,(on%20Windows%2FLinux).
+) an excellent guide on how to access the console logs for various browsers.
+
+With the console logs open, access the HA dashboard containing the the scheduler card.
+In the console log you should see a badge with the version that is currently active, similar to this:
+
+<img src="https://github.com/nielsfaber/scheduler-card/blob/main/screenshots/version_badge.png?raw=true" width="250px">
+
+In case this version does not match with the version which is installed, your browser is holding an older version of the card in its cache.
+HA uses aggressive caching of the frontend, this has nothing to do with the card.
+
+Potential ways to solve this:
+* In HACS, after installing/updating the card you are asked if you want to reload your browser (and yes, you do). You can also look for the existing installation of scheduler card (under Frontend) and choose redownload (in the top right menu) to get the option again.
+* Do a force refresh of the page: On windows you can do CTRL + F5 and on Apple hold down ⌘ Cmd and ⇧ Shift key and then press R.
+* Clear the browser cache: [here's](https://www.refreshyourcache.com/en/home/) a good guide on how to do this on various browsers.
+
+
+---
+
 
 ## Say thank you
+If you want to make donation as appreciation of my work, you can do so via PayPal (preferred) or buy me a coffee. Thank you!
 
+<a href="https://www.paypal.com/donate/?hosted_button_id=DR8A2V27EZYVN" target="_blank"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" width="150" /></a>
+<a href="https://www.buymeacoffee.com/vrdx7mi" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png"></a>
