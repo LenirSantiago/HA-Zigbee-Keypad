@@ -1,4 +1,4 @@
-# HA-Zigbee-Keypad-Xfinity-xhk1-ue <!-- omit in TOC -->
+# Zigbee Keypad Control for Home Assistant <!-- omit in TOC -->
 ![GitHub last commit](https://img.shields.io/github/last-commit/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue)
 
 - [Introduction](#introduction)
