@@ -55,15 +55,15 @@ The project uses HA [`events`](https://www.home-assistant.io/docs/configuration/
     - Set user names and codes
     - If using a schedule:
       - Add a schedule for each user code and one-time code:  
-          <img src="./blob/main/images/configure_entity.png" width="300"/>  
+          <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad/blob/main/images/configure_entity.png" width="300"/>  
           - Select Group Input Button  
           - Select the Keypad Button User entity  
           - Select either "Action Press" or "Make Scheme" (Preferrred)  
-          <img src="./blob/main/images/configure_time.png" width="300" />
+          <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad/blob/main/images/configure_time.png" width="300" />
 
           - Select `Press` action during the timeslots where the user will be active/enabled.  
           - NOTE: Users will be disabled/inactive during empty timeslots.  
-          <img src="./blob/main/images/configure_options.png" width="300" />
+          <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad/blob/main/images/configure_options.png" width="300" />
 
           - For each user schedule:
             - Name: Keypad User Slot 1, Tag: User
