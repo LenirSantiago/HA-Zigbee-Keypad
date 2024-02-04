@@ -83,6 +83,30 @@ For more advanced scheduling, please check https://github.com/nielsfaber/schedul
 
 ## Troubleshooting
 
+The automation scripts listen to the following `zha_event`:
+```bash
+event_type: zha_event
+data:
+  device_ieee: 00:0d:6f:00:15:74:86:bc
+  unique_id: 00:0d:6f:00:15:74:86:bc:1:0x0501
+  device_id: dc8c2629e4a29da1cc7af0c10cb262c2
+  endpoint_id: 1
+  cluster_id: 1281
+  command: arm
+  args:
+    arm_mode: 0
+    arm_mode_description: Disarm
+    code: "1234"
+    zone_id: 0
+  params: {}
+origin: LOCAL
+time_fired: "2024-02-04T17:32:26.071555+00:00"
+context:
+  id: 01HNTJVD2QESPJXK66XK735CK6
+  parent_id: null
+  user_id: null
+```
+
 If you have an issue with this scheduler card, please report it [here](https://github.com/nielsfaber/scheduler-card/issues).
 
 Also check https://github.com/nielsfaber/scheduler-card?tab=readme-ov-file#troubleshooting
