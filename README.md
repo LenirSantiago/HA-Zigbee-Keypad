@@ -1,53 +1,70 @@
 # HA-Zigbee-Keypad-Xfinity-xhk1-ue <!-- omit in TOC -->
+![GitHub last commit](https://img.shields.io/github/last-commit/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue)
 
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Updating](#updating)
-- [Usage](#usage)
-  - [Creating a schedule](#creating-a-schedule)
-    - [Choosing an entity and action](#choosing-an-entity-and-action)
-    - [Choosing the days](#choosing-the-days)
-    - [Choosing the time](#choosing-the-time)
-  - [Creating a time scheme](#creating-a-time-scheme)
-    - [Timeslots](#timeslots)
-    - [Time scheme editor](#time-scheme-editor)
-  - [Options panel](#options-panel)
-    - [Condition editor](#condition-editor)
-    - [Period](#period)
-    - [Behaviour after completion](#behaviour-after-completion)
-    - [Name](#name)
 - [Configuration](#configuration)
-  - [Options](#options)
-  - [Standard configuration](#standard-configuration)
-  - [Adding entities](#adding-entities)
-    - [Include](#include)
-    - [Exclude](#exclude)
-  - [Groups](#groups)
-  - [Schedule discovery](#schedule-discovery)
-  - [Customize](#customize)
-    - [Options](#options-1)
-    - [Actions](#actions)
-    - [Numeric action variable](#numeric-action-variable)
-    - [List action variable](#list-action-variable)
-    - [Conditions](#conditions)
-  - [Display options](#display-options)
-  - [Tags](#tags)
-- [Translations](#translations)
-- [Tips & Tricks](#tips--tricks)
-  - [Triggering multiple actions on a schedule](#triggering-multiple-actions-on-a-schedule)
-  - [Customizing built-in actions](#customizing-built-in-actions)
+- [Usage](#usage)
 - [Troubleshooting](#troubleshooting)
   - [Checking card version](#checking-card-version)
 - [Say thank you](#say-thank-you)
 
 ## Introduction
-Configuration, Automation and Dashboard YAML files to use a Zigbee Keypad. The Xfinity xhk1-ue was used for testing, but there shouldn't be a reason why this wouldn't work with other Zigbee (or zwave) keypads.
+This project helps use Zigbee Keypad in [`Home Assistant`](https://www.home-assistant.io/) using automations, scripts and dashboard YAML files.
+
+By default it creates two types of users: 
+- User Codes: The user names and codes are configurable as well as can be enabled/disabled manually or set by a schedule. 
+    - By default, (4) users are created but more can be added in the YAML file.
+    - By default, user names are 10-characters long, but the character length can be changed accodingly in the YAML file.
+- One-Time Codes: These codes work only once before they have to be reset (assigned)
+    - By default, (2) one-time codes are created but more can be added in the YAML file.
+
+| NOTE: the all codes are 4-digit long, but digit length can be changed to support the keypad model in use.
+
+The project uses HA [`events`](https://www.home-assistant.io/docs/configuration/events/) to trigger the automations. The automations authenticate the users and then trigger action scripts to do whatever you wish. For example, toggle a switch, open a door, etc.
+
+| NOTE: The Xfinity XHK1-UE was used for testing, but there shouldn't be a reason why this wouldn't work with other Zigbee (or zwave) keypads.
 
 ## Installation
+1. Install the [`Home Assistant ZHA (Zigbee Home Automation) integration`](https://www.home-assistant.io/integrations/zha/)
+2. Make sure you Zigbee Keypad is discovered properly
+2. Copy the contents of [`./blueprints/keypad`](https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/tree/main) and place it into `./config/blueprints/keypad`.  
+3. Copy the contents of  [`./packages/keypad`](https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/tree/main) and place it into `./config/packages/keypad`.  
+4. Copy the following into `./config/configuration.yaml`:
+    ```bash
+    homeassistant:  
+        packages: !include_dir_named packages
+    ```
+5. Install HACS Frontend [`lovelace-mushroom`](https://github.com/piitaya/lovelace-mushroom)
+6. Install HACS Frontend [`lovelace-mushroom-themes`](https://github.com/piitaya/lovelace-mushroom-themes)
+7. Install HACS Frontend [`lovelave-card-mod`](https://github.com/thomasloven/lovelace-card-mod)
+8. (optional) To enable users based on a schedule:  
+    1. Install HACS Integration [`scheduler-component`](https://github.com/nielsfaber/scheduler-component)  
+    2. Install HACS Frontend [`scheduler-card`](https://github.com/nielsfaber/scheduler-card)  
+9. Create a dashboard or a view for the keypad
+10. Copy the contents of `./dashboard.yaml` into your dashboard/view.
+10. Reload Home Assistant
 
-1. Download the latest release of `HA-Zigbee-Keypad-Xfinity-xhk1-ue` [here](https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/tree/main) and place it into `./config`.
-2. (optional) To enable users based on a schedule:  
-  2.1 make sure to install [`https://github.com/nielsfaber/scheduler-component`](https://github.com/nielsfaber/scheduler-component)
-  2.2 make sure to install [`https://github.com/nielsfaber/scheduler-card`](https://github.com/nielsfaber/scheduler-card) 
+## Configuration
+- Import automations from the blueprints provided
+- Edit the automations to trigger the corresponding action or scripts that you wish. Some examples are provided in this project.
+- Go to your keypad dashboard/view. Here you can:
+    - enable/disable the users by pressing on the corresponding button. 
+        - One-Time codes are considered disabled when set to `0000`
+    - Set user names and codes
+    - If using a schedule:
+        - you can enable/disable the users' schedules.
+        - Edit the users' schedules.
 
+
+## Usage
+
+If everything is configured properly, simply press a 4-digit code on the keypad.
+
+## Troubleshooting
+
+### Checking card version
+
+## Say thank you
 
