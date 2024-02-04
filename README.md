@@ -54,16 +54,24 @@ The project uses HA [`events`](https://www.home-assistant.io/docs/configuration/
         - One-Time codes are considered disabled when set to `0000`
     - Set user names and codes
     - If using a schedule:
-      - Add (6) schedules:
-          - <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/blob/main/images/configure_entity.png"/>
-          - <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/blob/main/images/configure_time.png" width="150" />
-          - <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/blob/main/images/configure_options.png" width="150" />          
-          1. Name: Keypad User Slot 1
-          2. Name: Keypad User Slot 2
-          3. Name: Keypad User Slot 3
-          4. Name: Keypad User Slot 4
-          5. Name: Keypad One-Time Slot 1
-          6. Name: Keypad One-Time Slot 2
+      - Add a schedule for each user code and one-time code:  
+          <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/blob/main/images/configure_entity.png" width="300"/>  
+          - Select Group Input Button  
+          - Select the Keypad Button User entity  
+          - Select either "Action Press" or "Make Scheme" (Preferrred)  
+          <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/blob/main/images/configure_time.png" width="300" />
+
+          - Select `Press` action during the timeslots where the user will be active/enabled.  
+          - NOTE: Users will be disabled/inactive during empty timeslots.  
+          <img src="https://github.com/LenirSantiago/HA-Zigbee-Keypad-Xfinity-xhk1-ue/blob/main/images/configure_options.png" width="300" />
+
+          - For each user schedule:
+            - Name: Keypad User Slot 1, Tag: User
+            - Name: Keypad User Slot 2, Tag: User
+            - Name: Keypad User Slot 3, Tag: User
+            - Name: Keypad User Slot 4, Tag: User
+            - Name: Keypad One-Time Slot 1, Tag: Onetime
+            - Name: Keypad One-Time Slot 2, Tag: Onetime
       - you can enable/disable the users' schedules.
       - Edit the users' schedules.
 
